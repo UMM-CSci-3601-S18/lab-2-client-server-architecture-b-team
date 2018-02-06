@@ -16,7 +16,7 @@ public class Util {
    */
 
   // This is a useless comment for testing purposes
-  
+
   public static JsonObject buildSuccessJsonResponse(String name, JsonElement value) {
     JsonObject dataObject = new JsonObject();
     dataObject.add(name, value);
