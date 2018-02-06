@@ -227,7 +227,7 @@ We include a Gradle wrapper which lets you run gradle tasks from the command lin
 [spark-documentation]: http://sparkjava.com/documentation.html
 [spark-response]: http://sparkjava.com/documentation.html#response
 [spark-structure]: http://sparkjava.com/tutorials/application-structure
-[travis]: https://travis-ci.org/
+[travis]: https://travis-ci.org/UMM-CSci-3601-S18/lab-2-client-server-architecture-b-team
 [travis-java]: https://docs.travis-ci.com/user/languages/java/
 [travis-yml]: .travis.yml
 [status-codes]: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
