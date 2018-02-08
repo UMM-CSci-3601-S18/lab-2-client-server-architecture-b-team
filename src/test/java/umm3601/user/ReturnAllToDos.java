@@ -15,5 +15,6 @@ public class ReturnAllToDos {
     DatabaseTodo db = new DatabaseTodo("src/main/data/todos.json");
     Todo[] todos = db.listTodos(new HashMap<>());
     assertEquals("Not expected number of todos.", 300, todos.length);
+    //assertEquals("Expected trait not present: id", todos[0]);
   }
 }
