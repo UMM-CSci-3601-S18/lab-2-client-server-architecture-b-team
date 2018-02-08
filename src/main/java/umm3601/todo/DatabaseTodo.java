@@ -35,6 +35,14 @@ public class DatabaseTodo {
       filteredTodos = filterTodosByOwner(filteredTodos, targetOwner);
     }
 
+    //Filter by completion status
+    if(queryParams.containsKey("status")) {
+      String targetStatus = queryParams.get("status")[0];
+      filteredTodos = filterTodosByStatus(filteredTodos, targetStatus);
+    }
+
+
+
     //More Filters here
 
 
@@ -47,5 +55,10 @@ public class DatabaseTodo {
   public Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
     return Arrays.stream(todos).filter(x -> x.owner == targetOwner).toArray(Todo[] ::new);
   }
+
+  public Todo[] filterTodosByStatus(Todo[] todos, String targetStatus) {
+    return Arrays.stream(todos).filter(x -> x.status == targetStatus).toArray(Todo[] ::new);
+  }
+
 
 }
