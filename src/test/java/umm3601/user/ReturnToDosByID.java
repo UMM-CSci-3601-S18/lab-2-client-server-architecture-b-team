@@ -9,11 +9,11 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class ReturnAllToDos {
+public class ReturnToDosByID {
   @Test
-  public void returnAllTodos() throws IOException {
+  public void returnTodoByID() throws IOException{
     DatabaseTodo db = new DatabaseTodo("src/main/data/todos.json");
-    Todo[] todos = db.listTodos(new HashMap<>());
-    assertEquals("Not expected number of todos.", 300, todos.length);
+    Todo todo = db.getTodo("0"); // 0 is a placeholder
+    //assertEquals("Incorrect Todo", todo.getOwner());
   }
 }
