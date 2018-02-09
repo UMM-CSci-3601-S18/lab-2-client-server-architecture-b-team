@@ -46,7 +46,9 @@ public class Server {
     // List users, filtered using query parameters
     get("api/users", userController::getUsers);
 
-    // List todos, unfiltered, pure, organic, and locally grown
+    // Get specific to-do
+    get("api/todos/:id", todoController::getTodo);
+    // List todos, unfiltered, pure, organic, and locally grown.
     get("api/todos", todoController::getTodos);
 
     // An example of throwing an unhandled exception so you can see how the
