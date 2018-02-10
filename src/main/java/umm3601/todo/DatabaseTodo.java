@@ -11,9 +11,9 @@ public class DatabaseTodo {
 
   private Todo[] allTodos;
 
-  public DatabaseTodo(String userDataFile) throws IOException {
+  public DatabaseTodo(String todoDataFile) throws IOException {
     Gson gson = new Gson();
-    FileReader reader = new FileReader(userDataFile);
+    FileReader reader = new FileReader(todoDataFile);
     allTodos = gson.fromJson(reader, Todo[].class);
   }
 
@@ -53,11 +53,11 @@ public class DatabaseTodo {
   * Takes an array of todos and a filter param and returns an array of todos */
 
   public Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
-    return Arrays.stream(todos).filter(x -> x.owner == targetOwner).toArray(Todo[] ::new);
+    return Arrays.stream(todos).filter(x -> x.owner.equals(targetOwner)).toArray(Todo[]::new);
   }
 
   public Todo[] filterTodosByStatus(Todo[] todos, String targetStatus) {
-    return Arrays.stream(todos).filter(x -> x.status == targetStatus).toArray(Todo[] ::new);
+    return Arrays.stream(todos).filter(x -> x.status.equals(targetStatus)).toArray(Todo[]::new);
   }
 
 

@@ -100,7 +100,7 @@ public class Server {
       todoDatabase = new DatabaseTodo(TODO_DATA_FILE);
       todoController = new TodoController(todoDatabase);
     } catch (IOException e) {
-      System.err.println("The server failed to load the user data; shutting down.");
+      System.err.println("The server failed to load the todo data; shutting down.");
       e.printStackTrace(System.err);
 
       // Shut the server down
