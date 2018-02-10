@@ -52,11 +52,11 @@ public class DatabaseTodo {
   /* Create an array of todos based on filter
   * Takes an array of todos and a filter param and returns an array of todos */
 
-  public Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
+  private Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
     return Arrays.stream(todos).filter(x -> x.owner.equals(targetOwner)).toArray(Todo[]::new);
   }
 
-  public Todo[] filterTodosByStatus(Todo[] todos, String targetStatus) {
+  private Todo[] filterTodosByStatus(Todo[] todos, String targetStatus) {
     return Arrays.stream(todos).filter(x -> x.status.equals(targetStatus)).toArray(Todo[]::new);
   }
 

@@ -15,8 +15,8 @@ import static spark.debug.DebugScreen.*;
 
 public class Server {
 
-  public static final String USER_DATA_FILE = "src/main/data/users.json";
-  public static final String TODO_DATA_FILE = "src/main/data/todos.json";
+  private static final String USER_DATA_FILE = "src/main/data/users.json";
+  private static final String TODO_DATA_FILE = "src/main/data/todos.json";
   private static Database userDatabase;
   private static DatabaseTodo todoDatabase;
 
@@ -73,7 +73,7 @@ public class Server {
    * there are problems reading from the JSON "database" file.
    * If that happens we'll print out an error message and shut
    * the server down.
-   * @throws IOException if we can't open or read the user data file
+   * gives an IOException if we can't open or read the user data file
    */
   private static UserController buildUserController() {
     UserController userController = null;
@@ -112,8 +112,5 @@ public class Server {
   }
 
   // Enable GZIP for all responses
-  private static Filter addGzipHeader = (Request request, Response response) -> {
-    response.header("Content-Encoding", "gzip");
-  };
-
+  private static Filter addGzipHeader = (Request request, Response response) -> response.header("Content-Encoding", "gzip");
 }
