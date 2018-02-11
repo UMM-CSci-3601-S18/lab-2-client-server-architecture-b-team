@@ -46,11 +46,12 @@ public class Server {
     // List users, filtered using query parameters
     get("api/users", userController::getUsers);
 
-    // Get specific to-do
     // List todos, unfiltered, pure, organic, and locally grown.
     get("api/todos", todoController::getTodos);
 
+    // Get specific to-do
     get("api/todos/:id", todoController::getTodo);
+
     // An example of throwing an unhandled exception so you can see how the
     // Java Spark debugger displays errors like this.
     get("api/error", (req, res) -> {

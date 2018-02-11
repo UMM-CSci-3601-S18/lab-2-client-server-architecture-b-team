@@ -19,6 +19,7 @@ public class TodoController {
   public JsonObject getTodo(Request req, Response res) {
     res.type("application/json");
     String id = req.params("id");
+    id = id.replace("id=", "");
     Todo todo = database.getTodo(id);
     if (todo != null) {
       return buildSuccessJsonResponse("todo", gson.toJsonTree(todo));
