@@ -47,7 +47,6 @@ public class Server {
     get("api/users", userController::getUsers);
 
     // Get specific to-do
-    // get("api/todos/:id", todoController::getTodo);
     // List todos, unfiltered, pure, organic, and locally grown.
     get("api/todos", todoController::getTodos);
 

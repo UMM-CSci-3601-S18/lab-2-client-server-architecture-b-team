@@ -41,12 +41,6 @@ public class DatabaseTodo {
       filteredTodos = filterTodosByStatus(filteredTodos, targetStatus);
     }
 
-    // Filter by id
-    if(queryParams.containsKey("id")) {
-      String targetID = queryParams.get("id")[0];
-      filteredTodos = filterTodosByID(filteredTodos, targetID);
-    }
-
     //More Filters here
 
 
