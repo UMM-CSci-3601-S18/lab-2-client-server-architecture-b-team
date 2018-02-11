@@ -17,13 +17,30 @@ function getTodoByID() {
 }
 
 function getTodosByOwner() {
-  console.log("Getting a todos by filter.");
+  console.log("Getting a todos by owner.");
 
   var HttpThing = new HttpClient();
   HttpThing.get("/api/todos?owner=" +  document.getElementById("owner").value, function(returned_json){
     document.getElementById('jsonDump').innerHTML = returned_json;
   });
 }
+
+function getTodosByFilter() {
+  console.log("Getting a todos by owner.");
+
+  var HttpThing = new HttpClient();
+  HttpThing.get("/api/todos?owner=" +  document.getElementById("owner").value
+    + "&category=" + document.getElementById("category").value
+
+
+    , function(returned_json){
+    document.getElementById('jsonDump').innerHTML = returned_json;
+  });
+}
+
+
+
+
 
 function HttpClient() {
   // We'll take a URL string, and a callback function.

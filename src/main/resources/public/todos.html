@@ -24,6 +24,7 @@ id: <input id="id" type= "text" name="id">
 
 <p>
   owner: <input id="owner" type= "text" name="owner">
+  <button type="button" id="getTodosByOwner"> Get todos by owner </button>
 </p>
 
 <p>
@@ -51,8 +52,10 @@ id: <input id="id" type= "text" name="id">
     element.addEventListener("click", getTodoByID, true);
 
     element = document.getElementById('getFilteredTodos');
-    element.addEventListener("click", getTodosByOwner, true);
+    element.addEventListener("click", getTodosByFilter, true);
 
+    element = document.getElementById('getTodosByOwner');
+    element.addEventListener("click", getTodosByOwner, true);
 
   }
 </script>
