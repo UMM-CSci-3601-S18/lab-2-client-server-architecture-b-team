@@ -41,12 +41,24 @@ public class DatabaseTodo {
       filteredTodos = filterTodosByStatus(filteredTodos, targetStatus);
     }
 
-    //Filter by category
+    // Filter by category
     if(queryParams.containsKey("category")) {
       String targetCategory = queryParams.get("category")[0];
       filteredTodos = filterTodosByCategory(filteredTodos, targetCategory);
     }
 
+    if(queryParams.containsKey("limit")) {
+      String targetNumber = queryParams.get("limit")[0];
+      int targetInt = 1;
+      try {
+        targetInt = Integer.parseInt(targetNumber);
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("'limit' field's value could not be parsed into an integer.");
+      }
+      filteredTodos = limitTodos(targetInt, filteredTodos);
+    }
     //More Filters here
 
 
@@ -56,8 +68,8 @@ public class DatabaseTodo {
   /* Create an array of todos based on filter
   * Takes an array of todos and a filter param and returns an array of todos */
 
-  private Todo[] filterTodosByID(Todo[] todos, String targetID) {
-    return Arrays.stream(todos).filter(x -> x.status.equals(targetID)).toArray(Todo[]::new);
+  private Todo[] limitTodos(int numberOfTodos, Todo[] todos) {
+    return Arrays.copyOf(todos, numberOfTodos);
   }
 
   private Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
@@ -68,11 +80,12 @@ public class DatabaseTodo {
     return Arrays.stream(todos).filter(x -> x.status.equals(targetStatus)).toArray(Todo[]::new);
   }
 
-
+  private Todo[] filterTodosByID(Todo[] todos, String targetID) {
+    return Arrays.stream(todos).filter(x -> x._id.equals(targetID)).toArray(Todo[]::new);
+  }
 
   private Todo[] filterTodosByCategory(Todo[] todos, String targetCategory) {
     return Arrays.stream(todos).filter(x -> x.category.equals(targetCategory)).toArray(Todo[]::new);
   }
-
 
 }
