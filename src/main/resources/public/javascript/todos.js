@@ -7,6 +7,15 @@ function getAllTodos() {
   });
 }
 
+function getTodoByID() {
+  console.log("Getting a todo by id.");
+
+  var HttpThing = new HttpClient();
+  HttpThing.get("/api/todos?id=" +  document.getElementById("id").value, function(returned_json){
+    document.getElementById('jsonDump').innerHTML = returned_json;
+  });
+}
+
 function HttpClient() {
   // We'll take a URL string, and a callback function.
   this.get = function (aUrl, aCallback) {
