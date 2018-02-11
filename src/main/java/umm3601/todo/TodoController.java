@@ -5,8 +5,7 @@ import com.google.gson.JsonObject;
 import spark.Request;
 import spark.Response;
 
-import static umm3601.Util.buildFailJsonResponse;
-import static umm3601.Util.buildSuccessJsonResponse;
+import static umm3601.Util.*;
 
 public class TodoController {
   private final Gson gson;
@@ -32,6 +31,12 @@ public class TodoController {
   public JsonObject getTodos(Request req, Response res) {
     res.type("application/json");
     Todo[] todos = database.listTodos(req.queryMap().toMap());
-    return buildSuccessJsonResponse("todos", gson.toJsonTree(todos));
+    if(todos != null) {
+      return buildSuccessJsonResponse("todos", gson.toJsonTree(todos));
+    }
+    else {
+      String message = "No todos matching the search criteria were found.";
+      return buildFailJsonResponse("path", message);
+    }
   }
 }

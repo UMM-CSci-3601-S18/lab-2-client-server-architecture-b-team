@@ -41,7 +41,11 @@ public class DatabaseTodo {
       filteredTodos = filterTodosByStatus(filteredTodos, targetStatus);
     }
 
-
+    // Filter by id
+    if(queryParams.containsKey("id")) {
+      String targetID = queryParams.get("id")[0];
+      filteredTodos = filterTodosByID(filteredTodos, targetID);
+    }
 
     //More Filters here
 
@@ -60,5 +64,8 @@ public class DatabaseTodo {
     return Arrays.stream(todos).filter(x -> x.status.equals(targetStatus)).toArray(Todo[]::new);
   }
 
+  private Todo[] filterTodosByID(Todo[] todos, String targetID) {
+    return Arrays.stream(todos).filter(x -> x.status.equals(targetID)).toArray(Todo[]::new);
+  }
 
 }
