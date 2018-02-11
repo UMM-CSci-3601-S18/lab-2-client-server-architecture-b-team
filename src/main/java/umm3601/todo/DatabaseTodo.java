@@ -41,6 +41,11 @@ public class DatabaseTodo {
       filteredTodos = filterTodosByStatus(filteredTodos, targetStatus);
     }
 
+    // Filter by category
+    if(queryParams.containsKey("category")) {
+      String targetCategory = queryParams.get("category")[0];
+      filteredTodos = filterTodosByCategory(filteredTodos, targetCategory);
+    }
     //More Filters here
 
 
@@ -59,7 +64,11 @@ public class DatabaseTodo {
   }
 
   private Todo[] filterTodosByID(Todo[] todos, String targetID) {
-    return Arrays.stream(todos).filter(x -> x.status.equals(targetID)).toArray(Todo[]::new);
+    return Arrays.stream(todos).filter(x -> x._id.equals(targetID)).toArray(Todo[]::new);
+  }
+
+  private Todo[] filterTodosByCategory(Todo[] todos, String targetCategory) {
+    return Arrays.stream(todos).filter(x -> x.category.equals(targetCategory)).toArray(Todo[]::new);
   }
 
 }
