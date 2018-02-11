@@ -46,6 +46,19 @@ public class DatabaseTodo {
       String targetCategory = queryParams.get("category")[0];
       filteredTodos = filterTodosByCategory(filteredTodos, targetCategory);
     }
+
+    if(queryParams.containsKey("limit")) {
+      String targetNumber = queryParams.get("limit")[0];
+      int targetInt = 1;
+      try {
+        targetInt = Integer.parseInt(targetNumber);
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("'limit' field's value could not be parsed into an integer.");
+      }
+      filteredTodos = limitTodos(targetInt, filteredTodos);
+    }
     //More Filters here
 
 
@@ -54,6 +67,10 @@ public class DatabaseTodo {
 
   /* Create an array of todos based on filter
   * Takes an array of todos and a filter param and returns an array of todos */
+
+  private Todo[] limitTodos(int numberOfTodos, Todo[] todos) {
+    return Arrays.copyOf(todos, numberOfTodos);
+  }
 
   private Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
     return Arrays.stream(todos).filter(x -> x.owner.equals(targetOwner)).toArray(Todo[]::new);
