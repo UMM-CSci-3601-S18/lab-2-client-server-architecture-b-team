@@ -16,4 +16,6 @@ public class Todo {
   public String getCategory() {
     return category;
   }
+  public String getStatus() { return status; }
+  public String getBody() { return body; }
 }
