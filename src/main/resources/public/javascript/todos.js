@@ -33,7 +33,7 @@ function getTodosByFilter() {
   /* variables used to determine if a filter should be used */
   var Owner = new String
   var Status = new String
-  var Body = new String
+
   var Category = new String
 
 
@@ -60,7 +60,8 @@ function getTodosByFilter() {
     Status = ""
   }
 
-  //body
+  //
+
 
   //category
   if(document.getElementById("category").value === "") {
@@ -70,10 +71,13 @@ function getTodosByFilter() {
     Category = "&category=" + document.getElementById("category").value;
   }
 
-  HttpThing.get("/api/todos?" + Owner
-    + Category
+  HttpThing.get("/api/todos?"
     + "&limit=" + document.getElementById("limit").value
+    + Owner
     + Status
+
+    + Category
+
 
 
 
