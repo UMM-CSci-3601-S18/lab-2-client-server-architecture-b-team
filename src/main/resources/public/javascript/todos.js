@@ -31,13 +31,23 @@ function getTodosByFilter() {
   var HttpThing = new HttpClient();
 
   /* variables used to determine if a filter should be used */
+  var Limit = String;
   var Owner = String;
   var Status = String;
   var Contains = String;
   var Category = String;
+  var Order = String;
 
 
-  /* if statements determine whether a filter should be use and what value it should have */
+  /* if statements determine whether a filter should be used and what value it should have */
+
+  //Limit
+  if(document.getElementById("limit").value === "" || document.getElementById("limit").value === "0") {
+    Limit = "";
+  }
+  else{
+    Limit = "&limit=" + document.getElementById("limit").value;
+  }
 
   //owner
   if(document.getElementById("owner").value === "") {
@@ -53,11 +63,11 @@ function getTodosByFilter() {
       Status = "&status=true";
     }
     else {
-      Status = "&status=false"
+      Status = "&status=false";
     }
   }
   else{
-    Status = ""
+    Status = "";
   }
 
   //contains
@@ -76,33 +86,35 @@ function getTodosByFilter() {
     Category = "&category=" + document.getElementById("category").value;
   }
 
-  if(document.getElementById("limit").value === "" || document.getElementById("limit").value === "0") {
+  //order
+  if(document.getElementById("CheckOrder").checked === true) {
+    if (document.getElementById("RO_Id").checked === true) {
+      Order = "&orderBy=id";
+    }
+    else {
+      if(document.getElementById("RO_Owner").checked === true){
+      Order = "&orderBy=owner";
+      }
+      else {
+        Order = "&orderBy=category"
+      }
+    }
+  }
+  else{
+    Order = "";
+  }
+
     HttpThing.get("/api/todos?"
+      + Limit
       + Owner
       + Status
       + Category
+      + Order
       + Contains
-
-
-
 
       , function(returned_json){
         document.getElementById('jsonDump').innerHTML = returned_json;
       });
-  }
-  else {
-    HttpThing.get("/api/todos?"
-      + "&limit=" + document.getElementById("limit").value
-      + Owner
-      + Status
-      + Category
-      + Contains
-
-      , function(returned_json){
-        document.getElementById('jsonDump').innerHTML = returned_json;
-      });
-  }
-
 }
 
 
