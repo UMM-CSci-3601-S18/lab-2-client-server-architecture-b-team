@@ -47,6 +47,13 @@ public class DatabaseTodo {
       filteredTodos = filterTodosByCategory(filteredTodos, targetCategory);
     }
 
+    //Filter by contains
+    if(queryParams.containsKey("contains")) {
+      String targetContains = queryParams.get("contains")[0];
+      filteredTodos = filterTodosByContains(filteredTodos, targetContains);
+    }
+
+    //limit # of responses
     if(queryParams.containsKey("limit")) {
       String targetNumber = queryParams.get("limit")[0];
       int targetInt = 1;
@@ -86,6 +93,10 @@ public class DatabaseTodo {
 
   private Todo[] filterTodosByCategory(Todo[] todos, String targetCategory) {
     return Arrays.stream(todos).filter(x -> x.category.equals(targetCategory)).toArray(Todo[]::new);
+  }
+
+  private Todo[] filterTodosByContains(Todo[] todos, String targetContains) {
+    return Arrays.stream(todos).filter(x -> x.body.contains(targetContains)).toArray(Todo[]::new);
   }
 
 }

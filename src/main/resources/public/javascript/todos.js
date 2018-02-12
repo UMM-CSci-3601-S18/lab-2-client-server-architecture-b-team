@@ -33,7 +33,7 @@ function getTodosByFilter() {
   /* variables used to determine if a filter should be used */
   var Owner = new String
   var Status = new String
-
+  var Contains = new String
   var Category = new String
 
 
@@ -60,8 +60,13 @@ function getTodosByFilter() {
     Status = ""
   }
 
-  //
-
+  //contains
+  if(document.getElementById("contains").value === "") {
+    Contains = "";
+  }
+  else{
+    Contains = "&contains=" + document.getElementById("contains").value;
+  }
 
   //category
   if(document.getElementById("category").value === "") {
@@ -75,8 +80,8 @@ function getTodosByFilter() {
     + "&limit=" + document.getElementById("limit").value
     + Owner
     + Status
-
     + Category
+    + Contains
 
 
 
