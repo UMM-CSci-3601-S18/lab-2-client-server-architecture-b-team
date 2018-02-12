@@ -97,15 +97,15 @@ public class DatabaseTodo {
   /* Create an array of todos based on filter
   * Takes an array of todos and a filter param and returns an array of todos */
 
-  private Todo[] limitTodos(int numberOfTodos, Todo[] todos) {
+  public Todo[] limitTodos(int numberOfTodos, Todo[] todos) {
     return Arrays.copyOf(todos, numberOfTodos);
   }
 
-  private Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
+  public Todo[] filterTodosByOwner(Todo[] todos, String targetOwner) {
     return Arrays.stream(todos).filter(x -> x.owner.equals(targetOwner)).toArray(Todo[]::new);
   }
 
-  private Todo[] filterTodosByStatus(Todo[] todos, String targetStatus) {
+  public Todo[] filterTodosByStatus(Todo[] todos, String targetStatus) {
     return Arrays.stream(todos).filter(x -> x.status.equals(targetStatus)).toArray(Todo[]::new);
   }
 
@@ -113,24 +113,24 @@ public class DatabaseTodo {
     return Arrays.stream(todos).filter(x -> x._id.equals(targetID)).toArray(Todo[]::new);
   }
 
-  private Todo[] filterTodosByCategory(Todo[] todos, String targetCategory) {
+  public Todo[] filterTodosByCategory(Todo[] todos, String targetCategory) {
     return Arrays.stream(todos).filter(x -> x.category.equals(targetCategory)).toArray(Todo[]::new);
   }
 
-  private Todo[] filterTodosByContains(Todo[] todos, String targetContains) {
+  public Todo[] filterTodosByContains(Todo[] todos, String targetContains) {
     return Arrays.stream(todos).filter(x -> x.body.contains(targetContains)).toArray(Todo[]::new);
   }
 
 
-  private Todo[] OrderTodosById(Todo[] todos) {
+  public Todo[] OrderTodosById(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getId)).toArray(Todo[]::new);
   }
 
-  private Todo[] OrderTodosByOwner(Todo[] todos) {
+  public Todo[] OrderTodosByOwner(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getOwner)).toArray(Todo[]::new);
   }
 
-  private Todo[] OrderTodosByCategory(Todo[] todos) {
+  public Todo[] OrderTodosByCategory(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getCategory)).toArray(Todo[]::new);
   }
 
