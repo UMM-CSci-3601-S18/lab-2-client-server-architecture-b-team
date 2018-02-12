@@ -76,7 +76,7 @@ function getTodosByFilter() {
     Category = "&category=" + document.getElementById("category").value;
   }
 
-  if(document.getElementById("limit").value === null || document.getElementById("limit").value === "0") {
+  if(document.getElementById("limit").value === "" || document.getElementById("limit").value === "0") {
     HttpThing.get("/api/todos?"
       + Owner
       + Status
