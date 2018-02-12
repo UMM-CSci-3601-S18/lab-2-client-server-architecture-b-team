@@ -29,16 +29,31 @@ function getTodosByFilter() {
   console.log("Getting a todos by owner.");
 
   var HttpThing = new HttpClient();
+  var Status = new String
+
+  if(document.getElementById("CheckStatus").checked === true) {
+    if (document.getElementById("RadioComplete").checked === true) {
+      Status = "&status=true";
+    }
+    else {
+      Status = "&status=false"
+    }
+  }
+  else{
+    Status = ""
+  }
+
   HttpThing.get("/api/todos?owner=" +  document.getElementById("owner").value
     + "&category=" + document.getElementById("category").value
     + "&limit=" + document.getElementById("limit").value
+    + Status
+
 
 
     , function(returned_json){
     document.getElementById('jsonDump').innerHTML = returned_json;
   });
 }
-
 
 
 
