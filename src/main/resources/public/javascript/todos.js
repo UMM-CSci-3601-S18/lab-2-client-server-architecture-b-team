@@ -31,10 +31,10 @@ function getTodosByFilter() {
   var HttpThing = new HttpClient();
 
   /* variables used to determine if a filter should be used */
-  var Owner = new String;
-  var Status = new String;
-  var Contains = new String;
-  var Category = new String;
+  var Owner = String;
+  var Status = String;
+  var Contains = String;
+  var Category = String;
 
 
   /* if statements determine whether a filter should be use and what value it should have */
