@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
 
 public class DatabaseTodo {
@@ -66,6 +67,30 @@ public class DatabaseTodo {
       }
       filteredTodos = limitTodos(targetInt, filteredTodos);
     }
+
+    //Order by Tag
+
+    //errors until getTag funcs are made
+    /**
+    if(queryParams.containsKey("orderBy")) {
+      String targetOrderBy = queryParams.get("orderBy")[0];
+
+      if(targetOrderBy == "id"){
+        filteredTodos = OrderTodosById(filteredTodos);
+      }
+      else{
+        if(targetOrderBy == "owner"){
+          filteredTodos = OrderTodosByOwner(filteredTodos);
+        }
+        else{
+          filteredTodos = OrderTodosByCategory(filteredTodos);
+        }
+      }
+
+    }
+     */
+
+
     //More Filters here
 
 
@@ -98,5 +123,21 @@ public class DatabaseTodo {
   private Todo[] filterTodosByContains(Todo[] todos, String targetContains) {
     return Arrays.stream(todos).filter(x -> x.body.contains(targetContains)).toArray(Todo[]::new);
   }
+
+
+  //these are errors until the getTag funcs are made
+  /**
+  private Todo[] OrderTodosById(Todo[] todos) {
+    return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getId)).toArray(Todo[]::new);
+  }
+
+  private Todo[] OrderTodosByOwner(Todo[] todos) {
+    return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getOwner)).toArray(Todo[]::new);
+  }
+
+  private Todo[] OrderTodosByCategory(Todo[] todos) {
+    return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getCategory)).toArray(Todo[]::new);
+  }
+  */
 
 }
