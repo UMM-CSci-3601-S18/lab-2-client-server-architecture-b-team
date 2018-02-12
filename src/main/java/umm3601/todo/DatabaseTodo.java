@@ -69,17 +69,14 @@ public class DatabaseTodo {
     }
 
     //Order by Tag
-
-    //errors until getTag funcs are made
-    /**
     if(queryParams.containsKey("orderBy")) {
       String targetOrderBy = queryParams.get("orderBy")[0];
 
-      if(targetOrderBy == "id"){
+      if(targetOrderBy.equals("id")){
         filteredTodos = OrderTodosById(filteredTodos);
       }
       else{
-        if(targetOrderBy == "owner"){
+        if(targetOrderBy.equals("owner")){
           filteredTodos = OrderTodosByOwner(filteredTodos);
         }
         else{
@@ -88,7 +85,7 @@ public class DatabaseTodo {
       }
 
     }
-     */
+
 
 
     //More Filters here
@@ -125,8 +122,6 @@ public class DatabaseTodo {
   }
 
 
-  //these are errors until the getTag funcs are made
-  /**
   private Todo[] OrderTodosById(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getId)).toArray(Todo[]::new);
   }
@@ -138,6 +133,6 @@ public class DatabaseTodo {
   private Todo[] OrderTodosByCategory(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getCategory)).toArray(Todo[]::new);
   }
-  */
+
 
 }
