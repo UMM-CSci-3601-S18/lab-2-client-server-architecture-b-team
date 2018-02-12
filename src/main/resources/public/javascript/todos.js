@@ -31,10 +31,10 @@ function getTodosByFilter() {
   var HttpThing = new HttpClient();
 
   /* variables used to determine if a filter should be used */
-  var Owner = new String
-  var Status = new String
-  var Contains = new String
-  var Category = new String
+  var Owner = String;
+  var Status = String;
+  var Contains = String;
+  var Category = String;
 
 
   /* if statements determine whether a filter should be use and what value it should have */
@@ -76,19 +76,33 @@ function getTodosByFilter() {
     Category = "&category=" + document.getElementById("category").value;
   }
 
-  HttpThing.get("/api/todos?"
-    + "&limit=" + document.getElementById("limit").value
-    + Owner
-    + Status
-    + Category
-    + Contains
+  if(document.getElementById("limit").value === "" || document.getElementById("limit").value === "0") {
+    HttpThing.get("/api/todos?"
+      + Owner
+      + Status
+      + Category
+      + Contains
 
 
 
 
-    , function(returned_json){
-    document.getElementById('jsonDump').innerHTML = returned_json;
-  });
+      , function(returned_json){
+        document.getElementById('jsonDump').innerHTML = returned_json;
+      });
+  }
+  else {
+    HttpThing.get("/api/todos?"
+      + "&limit=" + document.getElementById("limit").value
+      + Owner
+      + Status
+      + Category
+      + Contains
+
+      , function(returned_json){
+        document.getElementById('jsonDump').innerHTML = returned_json;
+      });
+  }
+
 }
 
 
