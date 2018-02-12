@@ -1,5 +1,4 @@
 package umm3601.user;
-
 import org.junit.Test;
 import umm3601.todo.DatabaseTodo;
 import umm3601.todo.Todo;
@@ -9,11 +8,11 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class ReturnToDosByID {
+public class ReturnLimitedTodos {
   @Test
-  public void returnTodoByID() throws IOException{
+  public void returnLimitedTodos() throws IOException {
     DatabaseTodo db = new DatabaseTodo("src/main/data/todos.json");
-    Todo todo = db.getTodo("58895985c1849992336c219b");
-    assertEquals("Incorrect Todo", "Fry", todo.getOwner());
+    Todo[] returnedTodos = db.limitTodos(10, db.listTodos(new HashMap<>()));
+    assertEquals("Incorrect number of returned todos.", 10, returnedTodos.length);
   }
 }
