@@ -31,6 +31,7 @@ function getTodosByFilter() {
   var HttpThing = new HttpClient();
   HttpThing.get("/api/todos?owner=" +  document.getElementById("owner").value
     + "&category=" + document.getElementById("category").value
+    + "&limit=" + document.getElementById("limit").value
 
 
     , function(returned_json){
