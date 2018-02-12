@@ -56,7 +56,7 @@ public class DatabaseTodo {
     //limit # of responses
     if(queryParams.containsKey("limit")) {
       String targetNumber = queryParams.get("limit")[0];
-      int targetInt = 1;
+      int targetInt = 301;
       try {
         targetInt = Integer.parseInt(targetNumber);
       }
