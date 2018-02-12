@@ -40,11 +40,6 @@ Filter By Completion Status<input type="checkbox" id="CheckStatus">
 
 
 
-
-
-
-
-
 <p>
   Return Limit: <input  id="limit" type="number" min="0" max="300">
 </p>
@@ -62,10 +57,24 @@ Filter By Completion Status<input type="checkbox" id="CheckStatus">
   contains: <input id="contains" type= "text" name="contains">
 </p>
 
-<p>
-  <button type="button" id="getFilteredTodos"> Get todos by filter </button>
-</p>
 
+Order by Tag <input type="checkbox" id="CheckOrder">
+
+<div class="switch-field">
+
+  ID <input type="radio" id="RO_Id" name="status" >
+
+  Owner <input type="radio" id="RO_Owner" name="status" checked>
+
+  Category <input type="radio" id="RO_Category" name="status" >
+
+</div>
+
+
+<!--Filter button-->
+<p>
+  <button type="button" id="getFilteredTodos"> Get Filtered Todos </button>
+</p>
 
 
 <hr/>
