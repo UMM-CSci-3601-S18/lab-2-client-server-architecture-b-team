@@ -17,7 +17,7 @@ function getTodoByID() {
 }
 
 function getTodosByOwner() {
-  console.log("Getting a todos by owner.");
+  console.log("Getting todos by owner.");
 
   var HttpThing = new HttpClient();
   HttpThing.get("/api/todos?owner=" +  document.getElementById("owner").value, function(returned_json){
@@ -26,11 +26,28 @@ function getTodosByOwner() {
 }
 
 function getTodosByFilter() {
-  console.log("Getting a todos by owner.");
+  console.log("Getting todos by filter.");
 
   var HttpThing = new HttpClient();
-  var Status = new String
 
+  /* variables used to determine if a filter should be used */
+  var Owner = new String
+  var Status = new String
+  var Body = new String
+  var Category = new String
+
+
+  /* if statements determine whether a filter should be use and what value it should have */
+
+  //owner
+  if(document.getElementById("owner").value === "") {
+    Owner = "";
+  }
+  else{
+    Owner = "&owner=" + document.getElementById("owner").value;
+  }
+
+  //status
   if(document.getElementById("CheckStatus").checked === true) {
     if (document.getElementById("RadioComplete").checked === true) {
       Status = "&status=true";
@@ -43,8 +60,18 @@ function getTodosByFilter() {
     Status = ""
   }
 
-  HttpThing.get("/api/todos?owner=" +  document.getElementById("owner").value
-    + "&category=" + document.getElementById("category").value
+  //body
+
+  //category
+  if(document.getElementById("category").value === "") {
+    Category = "";
+  }
+  else{
+    Category = "&category=" + document.getElementById("category").value;
+  }
+
+  HttpThing.get("/api/todos?" + Owner
+    + Category
     + "&limit=" + document.getElementById("limit").value
     + Status
 
