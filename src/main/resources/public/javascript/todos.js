@@ -60,10 +60,10 @@ function getTodosByFilter() {
   //status
   if(document.getElementById("CheckStatus").checked === true) {
     if (document.getElementById("RadioComplete").checked === true) {
-      Status = "&status=true";
+      Status = "&status=complete";
     }
     else {
-      Status = "&status=false";
+      Status = "&status=incomplete";
     }
   }
   else{

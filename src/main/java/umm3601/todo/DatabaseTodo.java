@@ -39,7 +39,13 @@ public class DatabaseTodo {
     //Filter by completion status
     if(queryParams.containsKey("status")) {
       String targetStatus = queryParams.get("status")[0];
-      filteredTodos = filterTodosByStatus(filteredTodos, targetStatus);
+
+      if(targetStatus.equals("complete")){
+      filteredTodos = filterTodosByStatus(filteredTodos, "true");
+      }
+      else{
+        filteredTodos = filterTodosByStatus(filteredTodos, "false");
+      }
     }
 
     // Filter by category
