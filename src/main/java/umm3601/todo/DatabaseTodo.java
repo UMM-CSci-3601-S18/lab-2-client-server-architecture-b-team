@@ -79,22 +79,22 @@ public class DatabaseTodo {
       String targetOrderBy = queryParams.get("orderBy")[0];
 
       if(targetOrderBy.equals("id")){
-        filteredTodos = OrderTodosById(filteredTodos);
+        filteredTodos = orderTodosById(filteredTodos);
       }
       else{
         if(targetOrderBy.equals("owner")){
-          filteredTodos = OrderTodosByOwner(filteredTodos);
+          filteredTodos = orderTodosByOwner(filteredTodos);
         }
         else{
           if(targetOrderBy.equals("category")){
-            filteredTodos = OrderTodosByCategory(filteredTodos);
+            filteredTodos = orderTodosByCategory(filteredTodos);
           }
           else{
             if(targetOrderBy.equals("status")){
-              filteredTodos = OrderTodosByStatus(filteredTodos);
+              filteredTodos = orderTodosByStatus(filteredTodos);
             }
             else{
-              filteredTodos = OrderTodosByBody(filteredTodos);
+              filteredTodos = orderTodosByBody(filteredTodos);
             }
           }
         }
@@ -137,23 +137,23 @@ public class DatabaseTodo {
   }
 
 
-  public Todo[] OrderTodosById(Todo[] todos) {
+  public Todo[] orderTodosById(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getId)).toArray(Todo[]::new);
   }
 
-  public Todo[] OrderTodosByOwner(Todo[] todos) {
+  public Todo[] orderTodosByOwner(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getOwner)).toArray(Todo[]::new);
   }
 
-  public Todo[] OrderTodosByCategory(Todo[] todos) {
+  public Todo[] orderTodosByCategory(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getCategory)).toArray(Todo[]::new);
   }
 
-  public Todo[] OrderTodosByStatus(Todo[] todos) {
+  public Todo[] orderTodosByStatus(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getStatus)).toArray(Todo[]::new);
   }
 
-  public Todo[] OrderTodosByBody(Todo[] todos) {
+  public Todo[] orderTodosByBody(Todo[] todos) {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getBody)).toArray(Todo[]::new);
   }
 
