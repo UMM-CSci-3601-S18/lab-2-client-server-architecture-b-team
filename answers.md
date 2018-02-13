@@ -25,4 +25,5 @@ Answer 7: When the age filter button is hit, the JS reads
           the DB sends back the array of users to the JS which 
           passes it to the HTML to display for the user.
 
-Answer 8: 
+Answer 8: The JS is defined in todos.js and users.js .
+          The JS is used in todos.html and users.html respectively.
