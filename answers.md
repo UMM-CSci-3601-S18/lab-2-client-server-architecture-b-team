@@ -10,7 +10,19 @@ Answer 3: Travis-CI allows us to continuously test new builds, and see where
 
 ***Answer 4: A _route_ is ....
 
-***Answer 5: 
+Answer 5: The `umm3601.Server` class acts as a middle man between 
+          the client and the DB. It loads up and stages all the parts 
+          necessary for the client to interact with the DB. It directs 
+          access to the HTML, defines the DB, creates the controllers.
+          
+The `umm3601.user.UserController` class directly interacts with the DB 
+and builds the array of users.
+
+- They are sent to users.html, the UI for accessing the DB
+- They are shown the full list if users, in all its Json glory
+- They are shown the list of users whose age tag is valued `25`
+- They are shown the user with the id tag valued `588935f5de613130e931ffd5`. 
+Valerie Erickson
 
 Answer 6: The `public` folder contains all the HTML, CSS, and 
           JS that is to be used by the client. Each of the 
