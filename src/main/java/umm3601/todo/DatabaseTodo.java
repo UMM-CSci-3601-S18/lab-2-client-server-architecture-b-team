@@ -80,10 +80,19 @@ public class DatabaseTodo {
           filteredTodos = OrderTodosByOwner(filteredTodos);
         }
         else{
-          filteredTodos = OrderTodosByCategory(filteredTodos);
+          if(targetOrderBy.equals("category")){
+            filteredTodos = OrderTodosByCategory(filteredTodos);
+          }
+          else{
+            if(targetOrderBy.equals("status")){
+              filteredTodos = OrderTodosByStatus(filteredTodos);
+            }
+            else{
+              filteredTodos = OrderTodosByBody(filteredTodos);
+            }
+          }
         }
       }
-
     }
 
 
@@ -134,5 +143,12 @@ public class DatabaseTodo {
     return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getCategory)).toArray(Todo[]::new);
   }
 
+  public Todo[] OrderTodosByStatus(Todo[] todos) {
+    return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getStatus)).toArray(Todo[]::new);
+  }
+
+  public Todo[] OrderTodosByBody(Todo[] todos) {
+    return Arrays.stream(todos).sorted(Comparator.comparing(Todo::getBody)).toArray(Todo[]::new);
+  }
 
 }

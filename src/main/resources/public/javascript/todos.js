@@ -96,7 +96,17 @@ function getTodosByFilter() {
       Order = "&orderBy=owner";
       }
       else {
+        if(document.getElementById("RO_Category").checked === true){
         Order = "&orderBy=category"
+        }
+        else{
+          if(document.getElementById("RO_Status").checked === true){
+            Order = "&orderBy=status"
+          }
+          else {
+            Order = "&orderBy=body"
+          }
+        }
       }
     }
   }
