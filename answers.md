@@ -17,6 +17,12 @@ Answer 6: The `public` folder contains all the HTML, CSS, and
           HTML files there allow the user to access a different 
           page on the site.
 
-Answer 7: 
+Answer 7: When the age filter button is hit, the JS reads 
+          the value of the text box with id "age" and places it 
+          in the URL, after "age=". Then the database gets 
+          the request containing "age=*value*" and creates an 
+          array of users with that value as their age. Finally, 
+          the DB sends back the array of users to the JS which 
+          passes it to the HTML to display for the user.
 
 Answer 8: 
