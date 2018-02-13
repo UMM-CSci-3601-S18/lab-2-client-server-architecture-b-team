@@ -8,7 +8,10 @@ Answer 2: Gradle is building the project automatically in its own way, getting
 Answer 3: Travis-CI allows us to continuously test new builds, and see where
           things went wrong in the past.
 
-***Answer 4: A _route_ is ....
+Answer 4: A _route_ is a tool to access multiple pages all from 
+          a single page. A route will display a desired page from 
+          the current page, allowing for the client to avoid loading 
+          a whole new page.
 
 Answer 5: The `umm3601.Server` class acts as a middle man between 
           the client and the DB. It loads up and stages all the parts 
